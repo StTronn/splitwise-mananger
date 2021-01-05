@@ -1,32 +1,29 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ExpenseViewer from "./components/ExpenseViewer";
+import Expense from "./components/Expense";
+import AddExpense from "./components/AddExpense";
+import { Expenses } from "./context/Expenses";
 
 function App() {
+  const { state, dispatch } = useContext(Expenses);
+  const { expenses } = state;
   return (
-    <div className="flex flex-col h-full items-center justify-center bg-gray-200 text-gray-700">
-      <div className="flex items-center">
-        <h1 className="text-6xl font-thin tracking-wider">Create React App + Tailwind CSS</h1>
-      </div>
-      <p className="my-6 tracking-wide">
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <div className="mt-6 flex justify-center">
-        <a
-          className="uppercase hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="ml-10 uppercase hover:underline"
-          href="https://tailwindcss.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Tailwind
-        </a>
-      </div>
+    <div className="min-h-screen bg-gray-200">
+      <Router>
+        <Switch>
+          <Route path="/Expense">
+            <Expense />
+          </Route>
+          <Route path="/">
+            {expenses.map((expense, index) => (
+              <ExpenseViewer expense={expense} index={index} key={index} />
+            ))}
+
+            <AddExpense />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
