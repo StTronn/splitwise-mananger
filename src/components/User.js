@@ -1,14 +1,16 @@
 import React from "react";
 
 const User = ({ user }) => {
+	//in case user is null prevent error
 	let name = "";
-	let share = "";
-	let paid = "";
+	let share = 0;
+	let paid = 0;
 	if (user) {
 		name = user.name;
 		share = user.share;
 		paid = user.paid;
 	}
+	const diff = paid - share;
 	return (
 		<div className="flex justify-between items-center h-16 p-4 my-6  rounded-lg border border-gray-100 shadow-md">
 			<div className="flex items-center">
@@ -23,10 +25,18 @@ const User = ({ user }) => {
 			</div>
 			<div className="text-xl font-bold text-gray-700">
 				{" "}
-				{paid} <span className="text-red-400 text-base">{paid - share}</span>
+				{paid} {diff >= 0 ? <Plus value={diff} /> : <Negative value={diff} />}
 			</div>
 		</div>
 	);
+};
+
+const Plus = ({ value }) => {
+	return <span className="text-green-400 text-base">+{value}</span>;
+};
+
+const Negative = ({ value }) => {
+	return <span className="text-red-400 text-base">{value}</span>;
 };
 
 export default User;

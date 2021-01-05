@@ -5,6 +5,7 @@ const EditUser = ({ user, index, updateUser }) => {
 	const [userName, setUserName] = useState(name);
 	const [userShare, setUserShare] = useState(share);
 	const [userPaid, setUserPaid] = useState(paid);
+
 	useEffect(() => {
 		updateUser(index, { name: userName, share: userShare, paid: userPaid });
 	}, [userName, userShare, userPaid]);
