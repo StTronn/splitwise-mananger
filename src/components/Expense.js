@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import queryString from "query-string";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Expenses } from "../context/Expenses";
 import EditUser from "./EditUser";
 
 const Expense = () => {
+	const history = useHistory();
 	const location = useLocation();
 	const { index } = queryString.parse(location.search);
 	const { state, dispatch } = useContext(Expenses);
@@ -23,8 +24,8 @@ const Expense = () => {
 
 	const saveExpense = () => {
 		const payload = { name, totalAmount, users };
-		console.log(payload);
 		dispatch({ type: "UPDATE_EXPENSE", payload, index });
+		history.push("/");
 	};
 	return (
 		<div className="min-h-screen flex-1 bg-gray-200 p-4 flex justify-center items-center">
@@ -39,7 +40,9 @@ const Expense = () => {
 							}}
 							className="text-xl font-bold text-gray-700 focus:outline-none"
 						/>
-						<div className="text-sm font-base text-gray-500">3 Members</div>
+						<div className="text-sm font-base text-gray-500">
+							{users.length} Members
+						</div>
 					</div>
 					<div className="border-b-2 border-green-400 mr-2 pl-2">
 						<input

@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Expenses } from "../context/Expenses";
 
 const AddExpense = () => {
+	const history = useHistory();
 	const { state, dispatch } = useContext(Expenses);
 	const handleClick = () => {
 		dispatch({ type: "ADD_EXPENSE", payload: {} });
+		const l = state.expenses.length;
+		history.push(`/expense?index=${l}`);
 	};
 	return (
 		<div className="grid w-screen">
