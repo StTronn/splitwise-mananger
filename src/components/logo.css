@@ -1,0 +1,121 @@
+:root {
+	--green-1: #00ffc4;
+	--green-2: #00ebb4;
+	--green-3: #00d8a5;
+	--green-4: #00c798;
+}
+
+.cointainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.circle {
+	background: #5367ff;
+	height: 100px;
+	width: 100px;
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+	transition: 1.4s linear;
+}
+
+@keyframes fadein2 {
+	from {
+		background-image: linear-gradient(
+			to right,
+			var(--green-1) 0px,
+			var(--green-1) 40px
+		);
+		opacity: 0.5;
+	}
+	25% {
+		opacity: 0.8;
+		background-image: linear-gradient(
+			to right,
+			var(--green-4) 0px,
+			var(--green-4) 20px,
+			var(--green-1) 20px,
+			var(--green-1) 40px
+		);
+	}
+	50% {
+		opacity: 1;
+		background-image: linear-gradient(
+			to right,
+			var(--green-4) 0px,
+			var(--green-4) 10px,
+			var(--green-3) 10px,
+			var(--green-3) 20px,
+			var(--green-2) 20px,
+			var(--green-2) 30px,
+			var(--green-1) 30px,
+			var(--green-1) 40px
+		);
+	}
+	75% {
+		opacity: 0.8;
+		background-image: linear-gradient(
+			to right,
+			var(--green-4) 0px,
+			var(--green-4) 20px,
+			var(--green-1) 20px,
+			var(--green-1) 40px
+		);
+	}
+	to {
+		background-image: linear-gradient(
+			to right,
+			var(--green-1) 0px,
+			var(--green-1) 40px
+		);
+		opacity: 0.5;
+	}
+}
+
+.m1 {
+	position: absolute;
+	bottom: -70%;
+	right: 25%;
+	height: 156px;
+	width: 40px;
+	transform: rotateZ(45deg);
+	z-index: 200;
+	background-image: linear-gradient(
+		to right,
+		var(--green-1) 0px,
+		var(--green-1) 10px,
+		var(--green-2) 10px,
+		var(--green-2) 20px,
+		var(--green-3) 20px,
+		var(--green-3) 30px,
+		var(--green-4) 30px,
+		var(--green-4) 40px
+	);
+	animation: 4.4s ease-in-out fadein2;
+	animation-iteration-count: infinite;
+}
+
+.m3 {
+	position: absolute;
+	bottom: -86%;
+	left: 48%;
+	height: 150px;
+	width: 40px;
+	transform: rotateZ(-45deg);
+	z-index: 200;
+
+	background-image: linear-gradient(
+		to right,
+		var(--green-4) 0px,
+		var(--green-4) 10px,
+		var(--green-3) 10px,
+		var(--green-3) 20px,
+		var(--green-2) 20px,
+		var(--green-2) 30px,
+		var(--green-1) 30px,
+		var(--green-1) 40px
+	);
+	animation: 4.4s ease-in-out fadein2;
+	animation-iteration-count: infinite;
+}

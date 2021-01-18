@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ExpenseViewer from "./components/ExpenseViewer";
 import Expense from "./components/Expense";
 import AddExpense from "./components/AddExpense";
+import Card from "./components/Card";
 import { Expenses } from "./context/Expenses";
 
 function App() {
@@ -12,15 +12,14 @@ function App() {
     <div className="min-h-screen bg-gray-200">
       <Router>
         <Switch>
-          <Route path="/Expense">
-            <Expense />
+          <Route path="/:name/:title">
+            <Card />
+          </Route>
+          <Route path="/:name/">
+            <Card />
           </Route>
           <Route path="/">
-            {expenses.map((expense, index) => (
-              <ExpenseViewer expense={expense} index={index} key={index} />
-            ))}
-
-            <AddExpense />
+            <Card />
           </Route>
         </Switch>
       </Router>
