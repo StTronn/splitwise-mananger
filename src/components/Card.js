@@ -97,13 +97,13 @@ const BackCointainer = styled.div`
 const Back = ({ name, title }) => (
   <BackCointainer>
     <div
-      style={{ background: "#5367ff" }}
+      style={{ background: "#4e5dce" }}
       className="py-8 px-8 font-bold text-2xl md:text-4xl text-white"
     >
       {name || "Rishav Thakur"}
     </div>
     <div
-      style={{ background: "#00d8a5" }}
+      style={{ background: "#00d09c" }}
       className="grid items-center w-full h-full text-md font-semibold text-md  px-8 text-white"
     >
       <span>
